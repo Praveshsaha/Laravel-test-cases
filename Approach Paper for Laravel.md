@@ -90,5 +90,5 @@ We are developing a REST API using PHP Laravel, PostgreSQL as the database, and 
 
 ## Conclusion
 
-Both approaches ensure secure and efficient API operations using Laravel, PostgreSQL, and Keycloak. The traditional approach is easier to implement and manage, while the microservices approach provides better scalability. The choice depends on project size and future scalability needs.
+Both approaches ensure secure and efficient API operations using Laravel, PostgreSQL, and Keycloak. The traditional approach is easier to implement and manage, while the microservices approach provides better scalability. For now, we will work on the project using the first approach. However, if we face any difficulties in completing the project with this approach, we will switch to the second approach.
 
