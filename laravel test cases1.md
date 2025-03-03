@@ -8,7 +8,7 @@
 
 \*\*When\*\* a user sends a request to an existing API endpoint,
 
-\*\*Then\*\* the server should return a valid response.
+\*\*Then\*\* the server returns a valid response.
 
 \*\*Remarks:\*\* Ensure all API routes are correctly defined in
 \`routes/api.php\`.
@@ -24,7 +24,7 @@ without errors.
 
 \*\*When\*\* the Laravel application starts,
 
-\*\*Then\*\* it should establish a successful connection to PostgreSQL.
+\*\*Then\*\* it establishes a successful connection to PostgreSQL.
 
 \*\*Remarks:\*\* Check logs for any connection errors.
 
@@ -38,7 +38,7 @@ without errors.
 
 \*\*When\*\* they send a POST request to \`/api/register\`,
 
-\*\*Then\*\* the system should create a new user.
+\*\*Then\*\* the system creates a new user.
 
 \*\*Remarks:\*\* Validate that the email is unique and password is
 hashed.
@@ -47,14 +47,13 @@ hashed.
 
 \## Test Case 4: User Login API
 
-\*\*Scenario:\*\* A registered user should be able to log in.
+\*\*Scenario:\*\* A registered user logs in.
 
 \*\*Given\*\* a user provides valid login credentials,
 
 \*\*When\*\* they send a POST request to \`/api/login\`,
 
-\*\*Then\*\* the API should return an authentication token with status
-\`200 OK\`.
+\*\*Then\*\* the API returns an authentication.
 
 \*\*Remarks:\*\* Validate that incorrect credentials return a \`401
 Unauthorized\` error.
@@ -63,14 +62,14 @@ Unauthorized\` error.
 
 \## Test Case 5: Fetch User Profile
 
-\*\*Scenario:\*\* A logged-in user should be able to fetch their
+\*\*Scenario:\*\* A logged-in user fetches their
 profile.
 
 \*\*Given\*\* a user is authenticated,
 
 \*\*When\*\* they send a GET request to \`/api/profile\`,
 
-\*\*Then\*\* the API should return user details.
+\*\*Then\*\* the API returns user details.
 
 \*\*Remarks:\*\* Unauthorized requests should return a \`401
 Unauthorized\` error.
@@ -79,13 +78,13 @@ Unauthorized\` error.
 
 \## Test Case 6: Create a Record in PostgreSQL
 
-\*\*Scenario:\*\* Data should be saved in the PostgreSQL database.
+\*\*Scenario:\*\* Data is saved in the PostgreSQL database.
 
 \*\*Given\*\* a user sends valid data in a POST request,
 
 \*\*When\*\* the request hits the API,
 
-\*\*Then\*\* the data should be stored in PostgreSQL successfully.
+\*\*Then\*\* the data is stored in PostgreSQL successfully.
 
 \*\*Remarks:\*\* Check if the database table updates correctly.
 
@@ -93,13 +92,13 @@ Unauthorized\` error.
 
 \## Test Case 7: Data Validation
 
-\*\*Scenario:\*\* API should validate incorrect data before processing.
+\*\*Scenario:\*\* API validates incorrect data before processing.
 
 \*\*Given\*\* a user submits incomplete or invalid data,
 
 \*\*When\*\* they send a request to an endpoint,
 
-\*\*Then\*\* the API should return a error with validation messages.
+\*\*Then\*\* the API returns a error with validation messages.
 
 \*\*Remarks:\*\* Use Laravel's request validation for error handling.
 
@@ -107,14 +106,14 @@ Unauthorized\` error.
 
 \## Test Case 8: Integration with Frontend
 
-\*\*Scenario:\*\* The frontend should be able to consume API responses
+\*\*Scenario:\*\* The frontend consumes API responses
 correctly.
 
 \*\*Given\*\* the frontend makes a valid API request,
 
 \*\*When\*\* the API responds,
 
-\*\*Then\*\* the frontend should correctly display the data.
+\*\*Then\*\* the frontend correctly displays the data.
 
 \*\*Remarks:\*\* Ensure CORS is enabled for frontend requests.
 
@@ -122,13 +121,13 @@ correctly.
 
 \## Test Case 9: API Error Handling
 
-\*\*Scenario:\*\* The API should return proper error messages.
+\*\*Scenario:\*\* The API returns proper error messages.
 
 \*\*Given\*\* an API request encounters an issue,
 
 \*\*When\*\* an error occurs,
 
-\*\*Then\*\* the API should return a error message.
+\*\*Then\*\* the API returns an error message.
 
 \*\*Remarks:\*\* Standardize error responses with Laravel exception
 handling.
