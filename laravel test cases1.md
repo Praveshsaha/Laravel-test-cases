@@ -49,7 +49,7 @@ hashed.
 
 \*\*Scenario:\*\* A registered user logs in.
 
-\*\*Given\*\* a user provides valid login credentials,
+\*\*Given\*\* a user provides valid login credentials (email, password),
 
 \*\*When\*\* they send a POST request to \`/api/login\`,
 
