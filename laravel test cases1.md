@@ -1,137 +1,165 @@
-\# REST API Test Cases - Laravel & PostgreSQL
 
-\## Test Case 1: API Endpoint Availability
+# **TEST CASES - Laravel REST API with PostgreSQL & Keycloak**  
 
-\*\*Scenario:\*\* The API should be accessible and respond correctly.
+**Submitted By**  
+Pravesh, Abhishek  
 
-\*\*Given\*\* the API server is running,
+**Submitted To**  
+Vipin Sir  
 
-\*\*When\*\* a user sends a request to an existing API endpoint,
+**Test Case Version**  
+1.0  
 
-\*\*Then\*\* the server returns a valid response.
+**Reviewer Name**  
+Manmeet Narang, Pooja Joshi  
 
-\*\*Remarks:\*\* Ensure all API routes are correctly defined in
-\`routes/api.php\`.
+---
 
-\-\--
+## **Goal**  
+The purpose of these test cases is to ensure that the Laravel REST API, integrated with PostgreSQL and Keycloak authentication, functions correctly, securely, and efficiently. The test cases focus on verifying API accessibility, database interactions, authentication, data validation, error handling, and overall system performance.  
 
-\## Test Case 2: Database Connection
+---
 
-\*\*Scenario:\*\* The Laravel application should connect to PostgreSQL
-without errors.
+## **Table of Contents**  
 
-\*\*Given\*\* the correct database credentials in \`.env\`,
+1. **Test Environment**  
+2. **Test Cases**  
+   - TC1: API Accessibility  
+   - TC2: Database Connection  
+   - TC3: User Registration  
+   - TC4: User Login  
+   - TC5: Fetch User Profile  
+   - TC6: Save Data in Database  
+   - TC7: Data Validation  
+   - TC8: Frontend Integration  
+   - TC9: Error Handling  
 
-\*\*When\*\* the Laravel application starts,
+---
 
-\*\*Then\*\* it establishes a successful connection to PostgreSQL.
+## **Test Environment**  
+- **Operating System:** Ubuntu (using Podman for containerization)  
+- **Backend Framework:** Laravel (PHP)  
+- **Database:** PostgreSQL  
+- **Authentication:** Keycloak  
+- **Server:** Laravel's built-in server Apache  
+- **Version Control:** Git  
+- **Logging & Debugging:** Laravel logs, PostgreSQL logs  
 
-\*\*Remarks:\*\* Check logs for any connection errors.
+---
 
-\-\--
+### **TC1: API Accessibility**  
+**Scenario:** Ensure that the API is accessible and responding.  
+**Remarks:** API routes must be correctly set in `routes/api.php`.  
 
-\## Test Case 3: User Registration API
+- **Given** the API server is running,  
+- **When** a user sends a request to an API endpoint,  
+- **Then** the server responds with a `200 OK` status.  
 
-\*\*Scenario:\*\* A user should be able to register via API.
+**Test Run Date:**    
+**Result:**  
 
-\*\*Given\*\* a user provides valid details (name, email, password),
+---
 
-\*\*When\*\* they send a POST request to \`/api/register\`,
+### **TC2: Database Connection**  
+**Scenario:** Validate connection between Laravel and PostgreSQL.  
+**Remarks:** Ensure correct `.env` configurations.  
 
-\*\*Then\*\* the system creates a new user.
+- **Given** the database details are correctly set in the `.env` file,  
+- **When** the Laravel app starts,  
+- **Then** it successfully connects to PostgreSQL.  
 
-\*\*Remarks:\*\* Validate that the email is unique and password is
-hashed.
+**Test Run Date:**   
+**Result:**  
 
-\-\--
+---
 
-\## Test Case 4: User Login API
+### **TC3: User Registration**  
+**Scenario:** A new user must be able to register via API.  
+**Remarks:** Ensure email uniqueness and password encryption.  
 
-\*\*Scenario:\*\* A registered user logs in.
+- **Given** a user provides valid registration details (name, email, password),  
+- **When** they send a `POST` request to `/api/register`,  
+- **Then** a new user is created, and the API returns `201 Created`.  
 
-\*\*Given\*\* a user provides valid login credentials (email, password),
+**Test Run Date:**    
+**Result:**  
 
-\*\*When\*\* they send a POST request to \`/api/login\`,
+---
 
-\*\*Then\*\* the API returns an authentication.
+### **TC4: User Login**  
+**Scenario:** A registered user must be able to log in.  
+**Remarks:** Invalid credentials must return `401 Unauthorized`.  
 
-\*\*Remarks:\*\* Validate that incorrect credentials return a \`401
-Unauthorized\` error.
+- **Given** a user provides valid login details (email, password),  
+- **When** they send a `POST` request to `/api/login`,  
+- **Then** the API returns an authentication token with `200 OK`.  
 
-\-\--
+**Test Run Date:**    
+**Result:**  
 
-\## Test Case 5: Fetch User Profile
+---
 
-\*\*Scenario:\*\* A logged-in user fetches their
-profile.
+### **TC5: Fetch User Profile**  
+**Scenario:** A logged-in user must fetch their profile details.  
+**Remarks:** Unauthorized users must get a `401` error.  
 
-\*\*Given\*\* a user is authenticated,
+- **Given** the user is logged in,  
+- **When** they send a `GET` request to `/api/profile`,  
+- **Then** the API returns user details with `200 OK`.  
 
-\*\*When\*\* they send a GET request to \`/api/profile\`,
+**Test Run Date:**    
+**Result:**  
 
-\*\*Then\*\* the API returns user details.
+---
 
-\*\*Remarks:\*\* Unauthorized requests should return a \`401
-Unauthorized\` error.
+### **TC6: Save Data in Database**  
+**Scenario:** Data must be correctly saved in PostgreSQL.  
+**Remarks:** Verify if the database table updates properly.  
 
-\-\--
+- **Given** the user sends valid data via `POST` request,  
+- **When** the request reaches the API,  
+- **Then** the data is stored successfully.  
 
-\## Test Case 6: Create a Record in PostgreSQL
+**Test Run Date:**    
+**Result:**  
 
-\*\*Scenario:\*\* Data is saved in the PostgreSQL database.
+---
 
-\*\*Given\*\* a user sends valid data in a POST request,
+### **TC7: Data Validation**  
+**Scenario:** The API must reject incorrect data.  
+**Remarks:** Use Laravel’s built-in validation.  
 
-\*\*When\*\* the request hits the API,
+- **Given** the user submits incomplete or invalid data,  
+- **When** they send a request to the API,  
+- **Then** the API returns a `422 Unprocessable Entity` error.  
 
-\*\*Then\*\* the data is stored in PostgreSQL successfully.
+**Test Run Date:**    
+**Result:**  
 
-\*\*Remarks:\*\* Check if the database table updates correctly.
+---
 
-\-\--
+### **TC8: Frontend Integration**  
+**Scenario:** The frontend must correctly display API data.  
+**Remarks:** Ensure proper CORS settings.  
 
-\## Test Case 7: Data Validation
+- **Given** the frontend makes a valid API request,  
+- **When** the API responds,  
+- **Then** the frontend correctly displays the data.  
 
-\*\*Scenario:\*\* API validates incorrect data before processing.
+**Test Run Date:**     
+**Result:**  
 
-\*\*Given\*\* a user submits incomplete or invalid data,
+---
 
-\*\*When\*\* they send a request to an endpoint,
+### **TC9: Error Handling**  
+**Scenario:** API must return proper error messages.  
+**Remarks:** Standardize error responses.  
 
-\*\*Then\*\* the API returns a error with validation messages.
+- **Given** an API request fails due to an issue,  
+- **When** an error occurs,  
+- **Then** the API returns a response with an error message.  
 
-\*\*Remarks:\*\* Use Laravel's request validation for error handling.
+**Test Run Date:**     
+**Result:**  
 
-\-\--
-
-\## Test Case 8: Integration with Frontend
-
-\*\*Scenario:\*\* The frontend consumes API responses
-correctly.
-
-\*\*Given\*\* the frontend makes a valid API request,
-
-\*\*When\*\* the API responds,
-
-\*\*Then\*\* the frontend correctly displays the data.
-
-\*\*Remarks:\*\* Ensure CORS is enabled for frontend requests.
-
-\-\--
-
-\## Test Case 9: API Error Handling
-
-\*\*Scenario:\*\* The API returns proper error messages.
-
-\*\*Given\*\* an API request encounters an issue,
-
-\*\*When\*\* an error occurs,
-
-\*\*Then\*\* the API returns an error message.
-
-\*\*Remarks:\*\* Standardize error responses with Laravel exception
-handling.
-
-\-\--
-
-
+---
