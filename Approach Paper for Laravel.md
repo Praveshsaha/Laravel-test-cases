@@ -1,26 +1,29 @@
-# Approach Paper for Laravel API with PostgreSQL & Keycloak Authentication
+# Approach Paper - Laravel API with PostgreSQL & Keycloak
+
+## Table of Contents
+
+1. [Objective](#1-objective)
+2. [Proposed Solution](#2-proposed-solution)
+   - [Approach: Laravel API with Keycloak Authentication](#approach-laravel-api-with-keycloak-authentication)
+   - [Architecture Diagram](#21-architecture-diagram)
+   - [Description](#22-description)
+   - [Implementation Steps](#23-implementation-steps)
+   - [Pre-requisites](#24-pre-requisites)
+3. [Conclusion](#3-conclusion)
 
 ## 1. Objective
 
 The goal of this project is to develop a RESTful API using PHP Laravel, with PostgreSQL as the database and Keycloak for authentication and authorization. This API will support CRUD (Create, Read, Update, Delete) operations and will be deployed using Podman on Ubuntu terminal.
 
-## 2. Proposed Solutions
+## 2. Proposed Solution
 
-Two possible solutions are considered for this project:
+### Approach: Laravel API with Keycloak Authentication
 
-### Approach 1: 
-Integrate Laravel API with PostgreSQL and Keycloak, where Keycloak manages user authentication, and the API handles CRUD operations on PostgreSQL.
+### 2.1. Architecture Diagram
 
-### Approach 2: 
-Use a microservices-based API architecture with Keycloak authentication.
+![Project Diagram](project diagram.excalidraw)
 
-## 3. Approach 1: Laravel API with Keycloak Authentication
-
-### 3.1. Architecture Diagram
-
-_(Provided in the attached diagram)_
-
-### 3.2. Description
+### 2.2. Description
 
 #### Solution:
 - The client sends a CRUD request to the API.
@@ -37,7 +40,7 @@ _(Provided in the attached diagram)_
 - Complex initial setup due to multiple integrations
 - Requires additional resources to manage Keycloak
 
-### 3.3. Implementation Steps
+### 2.3. Implementation Steps
 
 1. **Set Up Laravel Project**
    - Install Laravel on the Ubuntu server.
@@ -62,7 +65,7 @@ _(Provided in the attached diagram)_
    - Deploy the API on an Ubuntu server.
    - Use logs to monitor performance and issues.
 
-### 3.4. Pre-requisites
+### 2.4. Pre-requisites
 
 #### Hardware Requirements
 - Minimum 4GB RAM
@@ -82,53 +85,3 @@ _(Provided in the attached diagram)_
 - Open ports for PostgreSQL, Keycloak, and API server
 - Secure communication between services
 
-## 4. Approach 2: Microservices-Based API with Keycloak Authentication
-
-### 4.1. Architecture Diagram
-
-_(Provided in the attached diagram)_
-
-### 4.2. Description
-
-#### Solution:
-1. **Divide the API into Microservices**
-   - Separate the API into smaller independent services (e.g., User Management, Product Service, Order Service).
-
-2. **Integrate Keycloak Authentication**
-   - Each microservice validates user authentication with Keycloak.
-   - Secure endpoints using OAuth2 tokens.
-
-3. **Database Setup and API Communication**
-   - Use PostgreSQL as the central database.
-   - Each microservice interacts with the database independently.
-   - Use API Gateway to manage requests.
-
-4. **CRUD Operations in Microservices**
-   - Implement individual controllers for each microservice.
-   - Ensure proper validation and response handling.
-
-5. **Testing & Deployment**
-   - Test microservices independently.
-   - Deploy services in separate containers using Podman/Docker.
-   - Monitor API performance and logs.
-
-### 4.3. Pros and Cons
-
-#### Pros:
-- Better scalability and maintainability.
-- Improved security with isolated services.
-- Efficient API performance with independent microservices.
-
-#### Cons:
-- More complex setup compared to the monolithic approach.
-- Requires careful management of microservices communication.
-
-## 5. Conclusion
-
-After evaluating both approaches, we have chosen **Approach 1: Laravel API with Keycloak Authentication** for the following reasons:
-
-- **Simplicity & Faster Implementation:** Approach 1 provides a structured and traditional method that is easier to implement and manage compared to a microservices-based setup.
-- **Security & Authentication:** Keycloak offers a robust and centralized authentication system that seamlessly integrates with Laravel, ensuring secure access control.
-- **Performance Efficiency:** A monolithic structure reduces complexity in inter-service communication, making it faster and more efficient for handling API requests.
-- **Scalability Considerations:** While microservices offer better scalability in large-scale applications, our current project scope does not require extensive service separation, making Approach 1 more practical.
-- **Easier Deployment with Podman:** Managing a single Laravel API container with PostgreSQL and Keycloak simplifies deployment and maintenance compared to handling multiple microservices.
