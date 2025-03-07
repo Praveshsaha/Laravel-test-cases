@@ -5,7 +5,7 @@
 Pravesh, Abhishek  
 
 **Submitted To**  
-Vipin Sir  
+Vipin Tripathi  
 
 **Test Case Version**  
 1.0  
